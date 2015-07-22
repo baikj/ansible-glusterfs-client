@@ -1,15 +1,16 @@
-- name: Adds glusterfs client
+- name: Adds glusterfs client and utilities
   apt: >
     pkg={{ item }}
     state=latest
   with_items:
     - glusterfs-client
     - nfs-common
+    - fio
 
 - name: Ensure the Gluster volume is mounted
   mount:
     name: "{{ gluster_mount_dir }}"
-    src: "{{ gluster_server }}:/{{ gluster_brick_name }}"
+    src: "{{ gluster_servers[0] }}:/{{ gluster_brick_name }}"
     fstype: nfs
     opts: "defaults,noatime,nodiratime"
     state: mounted
