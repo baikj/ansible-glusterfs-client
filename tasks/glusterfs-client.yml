@@ -1,7 +1,7 @@
 - name: Adds glusterfs client and utilities
-  apt: >
-    pkg={{ item }}
-    state=latest
+  apt:
+    pkg: "{{ item }}"
+    state: latest
   with_items:
     - glusterfs-client
     - nfs-common
@@ -11,6 +11,6 @@
   mount:
     name: "{{ gluster_mount_dir }}"
     src: "{{ gluster_servers[0] }}:/{{ gluster_brick_name }}"
-    fstype: nfs
-    opts: "defaults,noatime,nodiratime"
+    fstype: "{{ gluster_mount_type }}"
+    opts: "{{ gluster_mount_options | default(gluster_mount_default_options[gluster_mount_type]) }}"
     state: mounted
