@@ -1,1 +1,4 @@
-- include: glusterfs-client.yml tags=glusterfs-client,glusterfs
+- include: glusterfs-client.yml
+  tags:
+    - glusterfs-client
+    - glusterfs

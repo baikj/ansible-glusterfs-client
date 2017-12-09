@@ -1,1 +1,5 @@
 gluster_mount_type: glusterfs
+gluster_mount_default_options:
+  nfs: defaults,noatime,nodiratime
+  glusterfs: defaults
+
