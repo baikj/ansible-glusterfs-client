@@ -12,6 +12,14 @@
     - nfs-common
     - fio
 
+- name: Creates mount points
+  file:
+    path: "{{ item.mount_point }}"
+    state: directory
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode | default('0775') }}"
+
 - name: Ensure the Gluster volume is mounted
   mount:
     name: "{{ item.mount_point }}"
