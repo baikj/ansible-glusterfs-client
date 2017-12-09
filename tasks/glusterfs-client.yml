@@ -1,3 +1,8 @@
+- name: Adds glusterfs official PPA
+  apt_repository:
+    repo: ppa:gluster/glusterfs-{{ gluster_version }}
+  update_cache: yes
+
 - name: Adds glusterfs client and utilities
   apt:
     pkg: "{{ item }}"
