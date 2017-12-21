@@ -17,7 +17,7 @@
     name: rpcbind
     enabled: false
     state: stopped
-  when: gluster_nfs_disable
+  when: gluster_nfs_disable | lower == "on"
 
 - name: Creates mount points
   file:
