@@ -12,6 +12,13 @@
     - nfs-common
     - fio
 
+- name: Disables rpcbind if NFS is disabled
+  service:
+    name: rpcbind
+    enabled: false
+    state: stopped
+  when: gluster_disable_nfs
+
 - name: Creates mount points
   file:
     path: "{{ item.mount_point }}"

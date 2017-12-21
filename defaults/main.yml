@@ -3,4 +3,6 @@ gluster_mount_default_options:
   nfs: defaults,noatime,nodiratime
   glusterfs: defaults
 
+gluster_disable_nfs: false
+
 gluster_version: 3.12
